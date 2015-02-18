@@ -1,7 +1,7 @@
 {
   "name": "duplicate-line-or-selection",
   "main": "./lib/duplicate-line-or-selection",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sublime style duplication.",
   "activationCommands": {
     "atom-workspace": "duplicate-line-or-selection:duplicate"
@@ -11,6 +11,5 @@
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
