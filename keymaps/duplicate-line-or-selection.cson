@@ -7,5 +7,8 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
-'atom-text-editor':
+'atom-workspace atom-text-editor:not([mini])':
+  'ctrl-shift-D': 'unset!'
+  'shift-cmd-D' : 'unset!'
   'ctrl-shift-D': 'duplicate-line-or-selection:duplicate'
+  'shift-cmd-D' : 'duplicate-line-or-selection:duplicate'
