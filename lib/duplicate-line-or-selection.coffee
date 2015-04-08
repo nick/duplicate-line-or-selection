@@ -13,6 +13,8 @@ module.exports = DuplicateLineOrSelection =
 
       [startRow, endRow] = selection.getBufferRowRange()
       numRows = endRow - startRow
+      if selectedBufferRange.start.column == 0 && selectedBufferRange.end.column == 0
+        numRows += 2
 
       # foldedRowRanges =
       #   editor.outermostFoldsInBufferRowRange(startRow, endRow)
@@ -27,6 +29,7 @@ module.exports = DuplicateLineOrSelection =
         selection.setBufferRange(selectedBufferRange.translate([1, 0]))
       else
         buffer.insert(selectedBufferRange.start, text)
+
         if endRow == startRow
           selection.setBufferRange(selectedBufferRange.translate([0, text.length]))
         else
