@@ -17,16 +17,11 @@ module.exports = DuplicateLineOrSelection =
         if selectedBufferRange.start.column == 0 && selectedBufferRange.end.column == 0
           numRows += 2
 
-        # foldedRowRanges =
-        #   editor.outermostFoldsInBufferRowRange(startRow, endRow)
-        #     .map (fold) -> fold.getBufferRowRange()
-
         rangeToDuplicate = [[startRow, 0], [endRow + 1, 0]]
         textToDuplicate = editor.getTextInBufferRange(rangeToDuplicate)
-        textToDuplicate = textToDuplicate + '\n' if endRow > editor.getLastBufferRow()
+        textToDuplicate = textToDuplicate + '\n' if endRow == editor.getLastBufferRow()
 
         if selection.isEmpty()
-          textToDuplicate = textToDuplicate + '\n' if endRow == editor.getLastBufferRow()
           buffer.insert([startRow, 0], textToDuplicate)
           selection.setBufferRange(selectedBufferRange.translate([1, 0]))
         else
@@ -38,6 +33,3 @@ module.exports = DuplicateLineOrSelection =
             endPoint = [endRow + numRows, selectedBufferRange.end.column]
             newRange = [[selectedBufferRange.end.row, selectedBufferRange.end.column], endPoint]
             selection.setBufferRange(newRange)
-
-        # for [foldStartRow, foldEndRow] in foldedRowRanges
-        #   editor.createFold(foldStartRow, foldEndRow)
